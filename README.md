@@ -126,10 +126,10 @@ Easily install the skills globally or locally using `npx`:
 
 ```bash
 # Install all skills globally (works across all your projects and directories)
-npx skills add Paramchoudhary/ResumeSkills -g -y
+npx skills add splash0047/ResumeSkills -g -y
 
 # Install to the current active workspace only
-npx skills add Paramchoudhary/ResumeSkills -y
+npx skills add splash0047/ResumeSkills -y
 
 # List all globally installed skills
 npx skills list --global
