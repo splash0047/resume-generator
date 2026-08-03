@@ -349,3 +349,97 @@ When managing resume versions:
 - ✅ Old versions archived (not deleted)
 - ✅ Update workflow is established
 - ✅ Regular master resume reviews scheduled
+
+---
+
+## Resume Version Learning (Outcome Tracker)
+
+> **Turn your application history into a data-driven optimizer.**
+> After 5+ applications, patterns emerge: which bullets get you interviews,
+> which projects resonate at startups vs. enterprise, which JD match scores
+> actually correlate with callbacks.
+
+### Outcome Log Template
+
+Track every application using this table:
+
+```markdown
+## Application Outcome Log
+
+| Date | Company | Role | Resume Version | JD Match % | Outcome | Days to Response | Notes |
+|---|---|---|---|---|---|---|---|
+| 2026-08 | rtCamp | SWE | v3-rtcamp | 87% | Phone Screen | 5 | GitHub profile mentioned |
+| 2026-08 | Darwinbox | SWE | v2-darwinbox | 74% | OA Invite | 3 | |
+| 2026-08 | Amazon | SWE | v4-amazon | 91% | Rejected | 14 | No response to OA |
+| 2026-08 | Atlassian | SWE | v3-atlassian | 82% | Interview | 7 | API design bullets noted |
+| 2026-08 | PhonePe | SWE | v2-phonePe | 78% | No Response | 21 | |
+```
+
+**Outcome codes:**
+- `Phone Screen` — recruiter reached out
+- `OA Invite` — online assessment sent
+- `Interview` — technical interview scheduled
+- `Rejected` — explicit rejection received
+- `No Response` — no contact after 3+ weeks (assume rejected)
+- `Offer` — offer received
+
+### Analysis Prompts (run after 5+ applications)
+
+Ask Claude to analyze your outcome log with these prompts:
+
+**1. Bullet Correlation**
+> "Looking at my outcome log, which bullets appeared in resumes that got interviews vs. rejections? Which projects correlated with callbacks?"
+
+**2. JD Match Threshold**
+> "What's the minimum JD match % in my log that still resulted in an OA or interview? Is there a clear threshold?"
+
+**3. Company Type Pattern**
+> "Do my startup applications perform better or worse than enterprise applications? Which resume version sections seem to matter most for each?"
+
+**4. Response Time Analysis**
+> "Which applications got the fastest responses? What did those resume versions have in common?"
+
+**5. Version Performance**
+> "Which resume version (by version name) has the best interview-to-application ratio? What changed between the weaker and stronger versions?"
+
+### Learning Loop
+
+After every 5 applications:
+
+```
+Analyze outcome log
+       │
+       ▼
+Identify lowest-performing bullets/projects
+       │
+       ▼
+Check evidence database: are those bullets well-grounded?
+       │
+       ▼
+Rewrite or replace weak evidence
+       │
+       ▼
+Update master resume
+       │
+       ▼
+Generate new tailored versions from updated master
+```
+
+### Version Naming Convention (Updated)
+
+Include outcome in the version archive once known:
+
+```
+resumes/
+├── master/
+│   └── master-resume-2026-08.md
+├── versions/
+│   ├── v3-rtcamp-2026-08-[phone-screen].pdf   ← outcome appended
+│   ├── v2-darwinbox-2026-08-[oa].pdf
+│   ├── v4-amazon-2026-08-[rejected].pdf
+│   └── v3-atlassian-2026-08-[interview].pdf
+└── outcome-log.md
+```
+
+This naming convention makes pattern analysis trivial — you can grep for `[interview]` or `[rejected]` to compare versions instantly.
+

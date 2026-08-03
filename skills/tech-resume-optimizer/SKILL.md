@@ -24,13 +24,43 @@ Use this skill when the user:
 
 ## Tech Resume Philosophy
 
-**What Tech Recruiters Look For:**
-1. Relevant technical skills (languages, frameworks, tools)
-2. Scale and impact (users, transactions, data size)
-3. Problem-solving abilities
-4. System design understanding
-5. Collaborative abilities
-6. Growth trajectory
+### The 5-Stage Hiring Funnel
+
+Understanding where your resume gets evaluated determines what to optimize:
+
+| Stage | Who/What | What They Optimize For |
+|---|---|---|
+| 1 | ATS Parser | Standard headers, `\pdfgentounicode=1`, no images, parseable text |
+| 2 | Keyword Filter | Critical keywords present (≥5 mentions in JD = Critical tier) |
+| 3 | LLM/AI Ranking | Context-rich engineering sentences (not keyword density) |
+| 4 | Technical Recruiter | Readable in 6 seconds, clear tech stack, no jargon without context |
+| 5 | Engineering Manager / HM | Credible architecture, technical reasoning, defensible claims |
+
+**Dual-Stack Rule:** Stages 1–2 and Stage 3 are NOT in conflict. Keywords embedded in evidence-rich engineering sentences satisfy the keyword filter AND LLM ranker simultaneously. You do not need to choose between ATS optimization and human readability.
+
+### Evidence Grounding Rule
+
+Every project bullet must be traceable to one of:
+- A specific file, import, or function in a GitHub repository
+- A field in the Engineering Evidence Database
+- A design document, PRD, or architecture diagram
+- A measurable metric you can defend in an interview
+
+Bullets without evidence sources are either rewritten until evidence exists or removed.
+
+### Company-Specific Bullet Style Guide
+
+Writing style is inferred from JD content (not company name). Use these as guidance:
+
+| Company Type | Signal Words in JD | Bullet Style |
+|---|---|---|
+| **rtCamp / Canonical / Automattic** | "open-source", "contribute", "PR", "community" | Lead with contributions: PRs merged, features shipped, community impact |
+| **Atlassian** | "developer tools", "API", "DX", "integration" | Lead with API design, SDK quality, developer adoption metrics |
+| **Razorpay / PhonePe** | "scale", "transactions", "fintech", "reliability" | Lead with reliability, scale, throughput, and system design decisions |
+| **Darwinbox** | "product", "SaaS", "enterprise", "HR" | Lead with product impact, user-facing features, customer outcomes |
+| **Microsoft** | "Azure", "cloud", "distributed", "platform" | Lead with system design, reliability, scale, and team collaboration |
+| **Amazon** | "customer", "ownership", "data-driven" | Lead with customer impact, measurable outcomes, ownership scope |
+| **Google** | "scale", "SRE", "distributed", "ML" | Lead with scale metrics, system design decisions, efficiency gains |
 
 ## Tech Resume Structure
 
@@ -125,25 +155,35 @@ Skills: Python, JavaScript, TypeScript, React, Node.js, Django, PostgreSQL, Mong
 
 ## Experience Section for Tech Roles
 
-### The Technical Bullet Formula
+### The PACTI Technical Bullet Formula
 
-**[Action Verb] + [Technical What] + [Scale/Impact] + [Technology Used]**
+**[Problem] + [Action] + [Core Technical Decision: Why X over Y?] + [Implementation] + [Impact]**
 
-**Examples:**
+**AI/ML Before/After Example:**
 
-❌ **Weak Technical Bullet:**
 ```
-- Worked on backend services
-- Helped improve system performance
-- Built features for the product
+❌ WEAK:
+- Implemented Isolation Forest for anomaly detection
+- Used FastAPI for the backend
+- Added Redis caching
+
+✅ PACTI:
+- Chose Isolation Forest over DBSCAN for log anomaly detection because the
+  system had no labeled data; IF's unsupervised nature handled varying log
+  densities robustly — reduced false alert rate by ~27% during development
+  testing on 15 simulated incidents
+
+- Chose FastAPI over Flask for the log ingestion API because native async
+  support was critical for concurrent log batch processing; built 5 REST
+  endpoints with automatic OpenAPI docs, handling ~500 entries per batch
+  during local performance testing
+
+- Added Redis caching to the API response layer because PostgreSQL query
+  latency spiked to 800ms under concurrent load; reduced average response
+  time to ~120ms during load testing with 50 concurrent requests
 ```
 
-✅ **Strong Technical Bullet:**
-```
-- Architected microservices migration from monolith, reducing deployment time from 2 hours to 15 minutes and enabling independent team deployments
-- Optimized PostgreSQL queries and implemented Redis caching, reducing API latency by 60% (from 500ms to 200ms) for 100K daily active users
-- Built real-time notification system using WebSockets and AWS SNS, handling 1M+ messages daily with 99.9% delivery rate
-```
+**Notice what PACTI adds:** The "Core Technical Decision" (why X over Y) is the element that signals senior engineering thinking. It is also the most common interview question trigger — every PACTI bullet prepares you for the follow-up question.
 
 ### Technical Metrics to Include
 

@@ -1,6 +1,6 @@
 ---
 name: Resume Bullet Writer
-description: Transform weak resume bullets into achievement-focused statements with metrics and impact
+description: Transform weak resume bullets into evidence-grounded, engineering-precise statements using the PACTI formula (Problem → Action → Core Technical Decision → Implementation → Impact). Every bullet must be traceable to evidence and defensible in an interview.
 ---
 
 # Resume Bullet Writer
@@ -47,7 +47,50 @@ These are active, specific, and quantify the impact.
 
 ## Core Frameworks
 
-### 1. The X-Y-Z Formula (Google Method)
+### 0. PACTI Formula — Primary Framework for Technical Bullets
+
+> **Use PACTI for all technical bullets.** X-Y-Z and CAR are secondary options for non-technical or business impact bullets.
+
+**Structure:**
+```
+P — Problem:                What infrastructure/user/business problem existed?
+A — Action:                 What did you specifically do?
+C — Core Technical Decision: Why X over Y? (the reasoning behind your choice)
+T — Implementation:         What did you build/use to execute?
+I — Impact:                 What measurably changed? (qualify by impact_type)
+```
+
+**The "Core Technical Decision" is the most important and most commonly missing element.** It shows engineering thinking, not just task completion.
+
+**PACTI Examples:**
+
+```
+❌ WEAK:  "Implemented Isolation Forest for anomaly detection"
+
+✅ PACTI: "Chose Isolation Forest over DBSCAN for log anomaly detection because
+           the system had no labeled data — IF's unsupervised nature made it
+           robust to varying log densities; reduced false alerts by ~27% during
+           development testing on 15 simulated incidents"
+```
+
+```
+❌ WEAK:  "Built backend API with FastAPI"
+
+✅ PACTI: "Chose FastAPI over Flask for the log ingestion API because native async
+           support was critical for concurrent log processing; built 5 REST
+           endpoints with automatic OpenAPI docs, handling ~500 log entries
+           per batch during local testing"
+```
+
+**Impact Classification** — controls how metrics are phrased:
+| impact_type | When to Use | Metric Phrasing Rule |
+|---|---|---|
+| `production` | System is live, serving real users | Exact numbers: "Reduced P95 latency by 40%" |
+| `research` | Academic or benchmark project | "Achieved 89% F1 on held-out test set" |
+| `development` | Personal/internship, not in production | Must qualify: "Reduced local inference time by ~60% during testing" |
+| `learning` | Course project, tutorial extended | No hard metrics; describe knowledge applied |
+
+---
 
 **Structure:** "Accomplished [X] as measured by [Y] by doing [Z]"
 
@@ -106,37 +149,27 @@ For resume bullet (condensed STAR):
 
 ## Power Verbs by Category
 
-### Leadership & Management
-- Led, Directed, Managed, Supervised, Coordinated
-- Spearheaded, Orchestrated, Oversaw, Championed, Mentored
+> **Engineering prose first.** Use these verbs. Avoid overuse of: Spearheaded, Orchestrated, Championed, Pioneered (flag if used >1×).
 
-### Achievement & Success
-- Achieved, Delivered, Exceeded, Surpassed, Attained
-- Secured, Won, Earned, Captured, Clinched
+### Technical Execution
+- Built, Designed, Implemented, Created, Developed, Wrote
+- Deployed, Configured, Integrated, Extended, Refactored, Migrated
+- Measured, Tested, Benchmarked, Validated, Debugged, Profiled
 
-### Growth & Improvement
-- Grew, Increased, Boosted, Expanded, Scaled
-- Elevated, Amplified, Maximized, Accelerated, Doubled
+### Optimization & Impact
+- Reduced, Automated, Improved, Optimized, Streamlined, Simplified
+- Increased, Accelerated, Eliminated, Cut, Scaled, Expanded
 
-### Creation & Innovation
-- Created, Developed, Designed, Built, Launched
-- Pioneered, Established, Founded, Introduced, Originated
+### Leadership & Collaboration
+- Led, Coordinated, Contributed, Mentored, Reviewed, Facilitated
+- Presented, Documented, Trained, Onboarded
 
-### Optimization & Efficiency
-- Streamlined, Optimized, Enhanced, Improved, Revitalized
-- Transformed, Restructured, Modernized, Automated, Simplified
+### Analysis & Research
+- Analyzed, Identified, Evaluated, Researched, Investigated, Diagnosed
+- Modeled, Forecasted, Audited, Assessed
 
-### Analysis & Strategy
-- Analyzed, Assessed, Evaluated, Identified, Diagnosed
-- Researched, Investigated, Examined, Audited, Forecasted
-
-### Collaboration & Communication
-- Collaborated, Partnered, Facilitated, Coordinated, United
-- Presented, Communicated, Negotiated, Influenced, Persuaded
-
-### Problem-Solving
-- Resolved, Solved, Troubleshot, Rectified, Debugged
-- Eliminated, Reduced, Mitigated, Prevented, Corrected
+### Achievement
+- Achieved, Delivered, Secured, Exceeded, Completed, Shipped
 
 ## Quantification Strategies
 
@@ -425,13 +458,52 @@ Focus on:
 
 Don't draw attention to gaps, just fill space with relevant achievements.
 
+## Interview Defensibility Rule
+
+> **If you cannot answer the questions your bullet implies, the bullet should not exist.**
+
+Every bullet must pass a 30-second defensibility test before it appears on the resume:
+
+| Bullet Type | Implied Interview Question |
+|---|---|
+| Technology choice | "Why did you choose X over Y?" |
+| Architecture claim | "Walk me through the system design." |
+| Metric claim | "How did you measure this?" |
+| Scale claim | "What was the traffic pattern / dataset size?" |
+| Leadership claim | "Who was on the team, what was your specific role?" |
+
+**Workflow:**
+1. Write the bullet using PACTI
+2. Generate the 2–3 most likely interview questions it implies
+3. Can you answer them clearly? → Keep the bullet
+4. Cannot answer one or more? → Either rewrite the bullet to reflect what you CAN defend, or remove it
+
+**Examples:**
+
+```
+Bullet: "Reduced debugging time by 70% using AI-powered log analysis"
+Q: "How was the 70% reduction measured?"
+→ Cannot answer (no measurement was done) → REWRITE
+
+Rewrite: "Automated log pre-filtering using Isolation Forest scores, reducing
+ the manual log review set from ~500 to ~50 entries per incident during
+ development testing"
+→ Defensible ✅
+```
+
+---
+
 ## Implementation Checklist
 
 For each resume bullet:
-1. ✅ Identify weak verb → Replace with power verb
-2. ✅ Check for metrics → Add at least one number
-3. ✅ Verify it shows result → Add outcome/impact
-4. ✅ Confirm specificity → Remove vague language
-5. ✅ Test length → Keep to 1-2 lines
-6. ✅ Read aloud → Ensure it sounds natural
-7. ✅ Verify relevance → Aligns with target role
+1. ✅ Apply PACTI: Problem → Action → Core Technical Decision → Implementation → Impact
+2. ✅ Classify impact_type: production / research / development / learning
+3. ✅ Check evidence: traceable to a source file, README, or document
+4. ✅ Check truthfulness: wording accurately reflects evidence (not overstated)
+5. ✅ Generate 2 interview questions: can you answer them? Keep if yes.
+6. ✅ Check metrics: qualified by impact_type (no bare numbers for development projects)
+7. ✅ Check specificity: ≥1 technology/algorithm/system named
+8. ✅ Check length: ≤2 rendered lines
+9. ✅ Check verbs: no cliché overuse (flag if Spearheaded/Orchestrated/Pioneered used >1×)
+10. ✅ Read aloud: sounds like an engineer, not a marketer
+
