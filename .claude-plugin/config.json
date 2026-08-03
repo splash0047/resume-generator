@@ -128,16 +128,46 @@
       "path": "skills/resume-section-builder/SKILL.md",
       "description": "Build targeted resume sections",
       "triggers": ["resume sections", "skills section", "summary section", "experience section"]
+    },
+    {
+      "name": "jd-intelligence-analyzer",
+      "path": "skills/jd-intelligence-analyzer/SKILL.md",
+      "description": "Build a weighted JD keyword importance graph and infer writing style profile from JD content",
+      "triggers": ["analyze job description", "JD intelligence", "keyword graph", "I have a JD", "here's the job posting", "I'm applying to", "optimize for this role", "tailor my resume"]
+    },
+    {
+      "name": "github-project-analyzer",
+      "path": "skills/github-project-analyzer/SKILL.md",
+      "description": "Extract verifiable evidence from GitHub repos and grade repository quality on 6 dimensions",
+      "triggers": ["analyze my repo", "github.com", "here's my GitHub", "extract bullets from my project", "read my repository", "grade my repo", "GitHub analyzer"]
+    },
+    {
+      "name": "engineering-evidence-database",
+      "path": "skills/engineering-evidence-database/SKILL.md",
+      "description": "Capture structured engineering evidence before generating resume bullets using a 15-field schema",
+      "triggers": ["document my project", "fill out evidence", "build evidence", "capture my project details", "evidence database", "evidence engine", "project evidence"]
+    },
+    {
+      "name": "resume-humanizer",
+      "path": "skills/resume-humanizer/SKILL.md",
+      "description": "Score and rewrite resume bullets on 7 dimensions to remove AI writing patterns",
+      "triggers": ["humanize my resume", "remove AI language", "style check my resume", "make this sound natural", "review my bullets", "AI writing detected", "sounds like AI"]
+    },
+    {
+      "name": "resume-critic",
+      "path": "skills/resume-critic/SKILL.md",
+      "description": "9-dimension quality gate with Truthfulness check, 3 recruiter personas, and Resume Audit Report",
+      "triggers": ["review my resume", "final check", "quality gate", "score my resume", "audit report", "is this ready to send", "resume critique", "final quality check"]
     }
   ],
   "categories": [
     {
       "name": "Resume Optimization",
-      "skills": ["resume-ats-optimizer", "resume-bullet-writer", "resume-quantifier", "resume-formatter", "resume-section-builder"]
+      "skills": ["resume-ats-optimizer", "resume-bullet-writer", "resume-quantifier", "resume-formatter", "resume-section-builder", "resume-humanizer", "resume-critic"]
     },
     {
       "name": "Job Search Strategy",
-      "skills": ["job-description-analyzer", "resume-tailor", "resume-version-manager", "offer-comparison-analyzer"]
+      "skills": ["job-description-analyzer", "jd-intelligence-analyzer", "resume-tailor", "resume-version-manager", "offer-comparison-analyzer", "engineering-evidence-database", "github-project-analyzer"]
     },
     {
       "name": "Supporting Documents",
