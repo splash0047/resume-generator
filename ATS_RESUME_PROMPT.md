@@ -511,15 +511,17 @@ Other evidence sources (paste links or descriptions):
 
 ## NOW EXECUTE
 
-Once you have filled in the inputs above, the pipeline will:
+> [!CAUTION]
+> **STRICT SKILL INVOCATION MANDATE FOR CLAUDE:**
+> If you have uploaded skills available (`jd-intelligence-analyzer`, `github-project-analyzer`, `engineering-evidence-database`, `resume-humanizer`, `resume-critic`), you **MUST EXPLICITLY INVOKE AND EXECUTE THEM** step-by-step. Do NOT generate the resume from memory or shortcuts.
 
-1. ✅ Phase 0: Build JD keyword importance graph + infer writing style profile
-2. ✅ Phase 1: Extract evidence from GitHub repos and other sources
-3. ✅ Phase 2: Audit candidate details vs. Critical/Major/Minor keywords
-4. ✅ Phase 3: Generate PACTI bullets with confidence scores + LaTeX resume
-5. ✅ Phase 3.5: Humanizer pass — 7-dimension style check
-6. ✅ Phase 4: ATS dual-stack validation
-7. ✅ Phase 5: 9-dimension Resume Critic — loop back if any fail
-8. ✅ Phase 6: Deliver LaTeX + Resume Audit Report + Interview Q\&A Pack
+Execute the pipeline in strict order and print each skill's scorecard/output:
+
+1. **Step 1: Execute `jd-intelligence-analyzer`** on INPUT 1 → Output the Keyword Importance Graph & Inferred 2D Writing Style Profile.
+2. **Step 2: Execute `github-project-analyzer` / `engineering-evidence-database`** on INPUT 2 & 3 → Output the Evidence Matrix & Confidence Scores.
+3. **Step 3: Generate PACTI Bullets** matching the Evidence Matrix.
+4. **Step 4: Execute `resume-humanizer`** → Run the 7-dimension scorecard on all bullets and print the Humanizer Report with any required rewrites.
+5. **Step 5: Execute `resume-critic`** → Run the 9-dimension audit gate (including Truthfulness Check and 3 Recruiter Personas) and print the full **Resume Audit Report**.
+6. **Step 6: Deliver Final Compilable LaTeX Code** only after all Critic dimensions pass (or loop back to Step 4 if any fail).
 
 **Copy this entire prompt with your filled-in inputs and send to Claude.**
