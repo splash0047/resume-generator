@@ -291,7 +291,7 @@ When quantifying a resume:
 ## Analysis Summary
 **Bullets without numbers:** X
 **Bullets with numbers:** Y
-**Target:** 100% of bullets should have at least one metric
+**Target:** ≥60% of bullets should have at least one metric. Remaining bullets must have concrete technical specifics (named technologies, component counts, specific patterns).
 
 ## Quantified Bullets
 
@@ -348,3 +348,39 @@ For each bullet:
 **Every bullet can be quantified.** If you think your work can't be measured, you haven't asked the right questions yet.
 
 The goal isn't to have impressive numbers—it's to have SPECIFIC numbers that show the scope and impact of your work.
+
+---
+
+## Fresher-Specific Guidance
+
+For candidates with <2 years of professional experience:
+
+### Evidence Hierarchy
+
+```
+Real metric (from production/benchmark)  →  BEST
+  ↓
+Qualified metric ("~60% during testing")  →  GOOD
+  ↓
+Concrete implementation detail ("4 REST endpoints", "JWT + bcrypt auth")  →  ACCEPTABLE
+  ↓
+No metric and no specifics  →  REWRITE NEEDED
+```
+
+### Rules for Freshers
+
+1. **Do NOT fabricate production metrics for personal/academic projects.** "Improved performance by 37%" is worse than "Built a FastAPI backend with 4 endpoints" when 37% is unverifiable.
+2. **"Built X using Y" is perfectly fine** when you genuinely built X and used Y. Not every bullet needs a percentage.
+3. **Qualify development metrics.** "Achieved 90% accuracy on test dataset" is truthful. "Achieved 90% accuracy" (implying production) is misleading.
+4. **If you can't defend a number in an interview, remove it.** An engineering manager will ask "How did you measure that?" — if you can't answer, the number hurts you.
+5. **Implementation details ARE evidence.** "Implemented RBAC with role-based middleware using JWT and Express" demonstrates engineering ability without needing a fabricated metric.
+
+### Fresher Metric Examples
+
+| ❌ Dangerous (unverifiable) | ✅ Safe (honest) |
+|---|---|
+| "Reduced query latency by 85%" | "Optimized MongoDB queries using indexing and aggregation pipelines" |
+| "Improved system performance by 40%" | "Reduced API response time from ~800ms to ~300ms during local load testing" |
+| "Processed 10K+ requests daily" | "Built REST API handling log ingestion from 3 microservice sources" |
+| "Achieved 99.9% uptime" | "Deployed on Streamlit Cloud with automated restart on failure" |
+| "Served 50K+ users" | "Deployed and publicly accessible at [demo link]" |

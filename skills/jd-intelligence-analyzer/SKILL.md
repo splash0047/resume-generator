@@ -120,6 +120,39 @@ Detect from domain vocabulary, product references, and action verbs.
 
 ---
 
+## Step 2.5: Role Family Classification
+
+Classify the JD into a role family. This classification drives project selection and skill ordering from the Candidate Position Brief.
+
+### Role Family Detection
+
+| Role Family | JD Signals |
+|---|---|---|
+| **SDE / Software Engineer** | "DSA", "algorithms", "data structures", "system design", "OOP", "clean code", language-specific requirements (Java, C++, Python), "coding round" |
+| **AI/ML Engineer** | "machine learning", "deep learning", "NLP", "LLMs", "model training", "inference", "RAG", "AI agents", "MLOps", "data pipeline" |
+| **Full Stack Developer** | "React", "Angular", "Vue", "Node.js", "REST API", "responsive design", "frontend + backend", "full stack" |
+| **DevOps / Cloud Engineer** | "CI/CD", "Kubernetes", "Docker", "Terraform", "cloud infrastructure", "monitoring", "SRE", "deployment" |
+| **Data Engineer** | "ETL", "Spark", "Kafka", "data warehouse", "BigQuery", "Airflow", "data pipeline", "streaming" |
+
+### Output
+
+```markdown
+## JD Role Family
+
+**Classified as:** [Role Family]
+**Confidence:** [High / Medium / Low]
+**Signals:** [List of JD phrases that led to classification]
+
+**Comparison to Candidate Position Brief:**
+- Candidate primary: [Role Family]
+- JD role family: [Role Family]
+- Alignment: [Match / Adjacent / Mismatch]
+
+If mismatch: Consider switching to candidate's secondary role positioning.
+```
+
+---
+
 ## Step 3: Red Flag Detection
 
 Scan the JD for signals that indicate a poor role fit or unrealistic expectations.
@@ -147,6 +180,26 @@ For this JD, rank your projects in this order:
 3. **[Project C]** — covers only Minor keywords (Redis)
 
 Recommendation: Lead with Project A and Project B. Drop Project C unless space permits.
+```
+
+### Technologies to Remove/Minimize
+
+Based on the keyword importance graph and JD role family, output technologies from the candidate's profile that should be DE-EMPHASIZED on this resume:
+
+```markdown
+## Technologies to Remove/Minimize
+
+For this JD, the following candidate skills should NOT appear in Technical Skills
+(or appear only if space permits after all relevant skills are listed):
+
+| Technology | Reason |
+|---|---|
+| [Tech] | Not mentioned in JD; dilutes SDE specialization signal |
+| [Tech] | Mentioned once as Minor; don't lead with it |
+| [Tech] | Domain mismatch — this is an AI/ML technology for an SDE role |
+
+**Skills section should have ≤15 technologies total.**
+**Order by:** JD Critical → JD Major → JD Minor → Candidate core identity
 ```
 
 ---

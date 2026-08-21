@@ -38,8 +38,8 @@ Score the full set of resume bullets on each dimension (0–10). All dimensions 
 | 1 | AI Buzzword Score | ≤2/10 | Frequency and clustering of AI-cliché words |
 | 2 | Specificity Score | ≥8/10 | Every bullet names ≥1 technology, algorithm, system, or proper noun |
 | 3 | Evidence Score | 10/10 | Every bullet traceable to the evidence database or GitHub source |
-| 4 | Metric Density | ≥7/10 | ≥1 measurable outcome per bullet (%, time, users, latency, count) |
-| 5 | Technical Density | ≥8/10 | Architecture / algorithm / design reasoning present in technical bullets |
+| 4 | Metric Density | ≥5/10 | Measurable outcomes preferred; concrete technical implementation details (named technologies, specific endpoints, component counts) count toward this score when real metrics aren't available |
+| 5 | Technical Density | ≥6/10 | Architecture / algorithm / design reasoning present in technical bullets. PACTI "Core Technical Decision" is recommended but not mandatory — direct implementation statements with named technologies also score well |
 | 6 | Readability | ≥8/10 | Max 1 adjective per bullet; no filler words; ≤2 lines when rendered |
 | 7 | Interview Defensibility | 10/10 | Every bullet has a Q&A pair in the evidence database that the candidate can answer |
 
@@ -110,17 +110,20 @@ Every bullet must contain at least one of:
 
 ---
 
-## Dimension 5: Technical Density (target ≥8/10)
+## Dimension 5: Technical Density (target ≥6/10)
 
-Technical bullets must contain engineering reasoning, not just facts. The PACTI structure enforces this — specifically the "Core Technical Decision" step.
+Technical bullets should ideally contain engineering reasoning, not just facts. The PACTI structure helps with this — specifically the "Core Technical Decision" step — but is NOT mandatory for every bullet.
 
 **Low technical density (rewrite):**
 > Built an anomaly detection system using Isolation Forest.
 
-**High technical density (keep):**
+**High technical density (keep — PACTI style):**
 > Chose Isolation Forest over DBSCAN for anomaly detection because the log data lacked labels; the unsupervised nature of IF made it robust to varying log densities across microservices.
 
-The difference: the second bullet explains *why*, not just *what*. A recruiter reading the second bullet immediately understands the candidate thinks like an engineer, not a feature-lister.
+**Acceptable technical density (keep — direct style):**
+> Built a REST API with FastAPI serving 4 endpoints for log ingestion and retrieval, with structured error handling and request validation using Pydantic models.
+
+The second example uses PACTI and explains *why*. The third example doesn't use PACTI but still has high specificity (named technology, component count, specific patterns). **Both are acceptable.** Not every bullet needs to be a mini architecture decision record.
 
 ---
 

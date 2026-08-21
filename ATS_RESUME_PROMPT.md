@@ -184,17 +184,18 @@ Apply these specialized frameworks at the appropriate workflow stage.
 ### Skill 2 — Resume ATS Optimizer (Dual-Stack)
 - **The 5-Stage Hiring Funnel:**
   1. ATS Parsing (standard headers, no images, `\pdfgentounicode=1`)
-  2. Keyword Filtering (Critical keywords must appear 2–4× naturally)
+  2. Keyword Filtering (Critical keywords should appear at least once in context)
   3. LLM/AI Ranking (context-rich sentences beat keyword density)
   4. Recruiter Review (readable in 6 seconds)
   5. Hiring Manager / Technical Screen
 - Optimize for **both Stage 1 (ATS) and Stage 3 (LLM ranking)**. These are not in conflict — keywords embedded in context-rich engineering sentences satisfy both.
+- **Fresher Note:** On a short 1-page fresher resume, keyword repetition for density is counterproductive. Each keyword should appear naturally 1-2× — not 2-4×.
 - Standard section headers: Education, Experience, Projects, Technical Skills.
 - Keyword Placement Priority: (1) Technical Skills, (2) Experience Bullets, (3) Project Bullets.
 
 ### Skill 3 — Resume Bullet Writer (PACTI Formula)
 
-**Primary Framework: PACTI** (use for all technical bullets)
+**Primary Framework: PACTI** (use selectively for bullets where the technical decision adds signal)
 ```
 P — Problem:               What infrastructure/user/business problem existed?
 A — Action:                What did you specifically do?
@@ -203,13 +204,21 @@ T — Implementation:        What did you build/use to execute?
 I — Impact:                What measurably changed? Qualify by impact_type.
 ```
 
-**PACTI Example:**
+**When to use PACTI:** Bullets describing architecture decisions, algorithm choices, or framework selections where the "why" demonstrates engineering thinking.
+
+**When NOT to use PACTI:** Simple implementation bullets where stating what you built is sufficient. Not every bullet needs an algorithm comparison.
+
+**PACTI Example (for architecture decisions):**
 ```
-❌ WEAK:  "Implemented Isolation Forest for anomaly detection"
 ✅ PACTI: "Chose Isolation Forest over DBSCAN for log anomaly detection because
-           the data was unlabeled — IF requires no density assumptions and handles
-           high-dimensional sparse logs robustly; reduced false alerts by ~27%
+           the data was unlabeled — reduced false alerts by ~27%
            during development testing on 15 simulated incidents"
+```
+
+**Direct Statement (for implementation bullets):**
+```
+✅ DIRECT: "Built a REST API with FastAPI serving 4 endpoints for log ingestion
+            and retrieval, with request validation and structured error handling"
 ```
 
 **Secondary Frameworks** (use when PACTI doesn't fit):
@@ -245,9 +254,14 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 - **Keyword Rules**: ✅ Add keywords that truthfully describe your work. ❌ Never fabricate.
 
 ### Skill 5 — Resume Quantifier
-- Every bullet should have ≥1 measurable outcome. Classify by impact_type first.
+- Prefer measurable outcomes, but classify by evidence strength first:
+  - **Real evidence** → Use metric with appropriate qualifier
+  - **No evidence** → Describe implementation concretely, skip the metric
+  - **Never invent a percentage just to satisfy metric density**
 - Estimation when exact numbers unavailable: use ranges ("8–12"), conservative estimates, or minimums ("100+").
 - **Never invent production metrics for development or learning projects.**
+- **Evidence Hierarchy:** Real metric > qualified metric > concrete implementation detail > no metric.
+- A bullet like "Built RBAC authentication using JWT and Express middleware" is better than "Improved authentication performance by 37%" when that 37% is unverifiable.
 
 ### Skill 6 — Resume Formatter (Jake's Template Specifics)
 - **Page Length**: Strictly ONE page. Use `\vspace{-Xpt}` between sections.
@@ -257,7 +271,8 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 
 ### Skill 7 — Resume Section Builder
 - **Section Order**: Heading → Education → Experience → Projects → Technical Skills → Certifications (opt.) → Leadership (opt.)
-- **No Summary/Objective section.** **No Relevant Coursework section.**
+- **No Summary/Objective section.**
+- **Coursework — Conditional**: Include relevant coursework (DSA, DBMS, OS, Networks) only for fresher campus/walk-in roles where these are explicit screening criteria. Omit for experienced roles or roles that don't list academic subjects.
 - Bullet guidelines: 3–4 bullets per recent role, 2–3 per older role, 2–3 per project.
 
 ### Skill 8 — Industry Term Handling
@@ -268,12 +283,35 @@ I — Impact:                What measurably changed? Qualify by impact_type.
   1. AI Buzzword Score ≤2/10
   2. Specificity Score ≥8/10 (every bullet names ≥1 technology/algorithm/system)
   3. Evidence Score 10/10 (every bullet traceable to evidence source)
-  4. Metric Density ≥7/10
-  5. Technical Density ≥8/10 (PACTI "Core Technical Decision" present)
+  4. Metric Density ≥5/10 (prefer real metrics; concrete technical details count toward this score when metrics aren't available)
+  5. Technical Density ≥6/10 (PACTI "Core Technical Decision" recommended but not mandatory for every bullet; direct implementation statements with named technologies also score well)
   6. Readability ≥8/10 (max 1 adjective, no filler words, ≤2 lines)
   7. Interview Defensibility 10/10 (every bullet has a Q\&A pair)
 - This is a **style checker, not a word filter.** Flag overuse; do not hard-block words.
 - Writing tone is set by the inferred style profile from Skill 1.
+
+### Skill 12 — Candidate Positioning (Phase -1)
+- Determines the candidate's primary role identity BEFORE any JD analysis.
+- Classifies into role families: SDE, AI/ML, Full Stack, DevOps, Data Engineer.
+- Selects core technical identity (8-12 technologies), project priority, skill subset.
+- Outputs a **Candidate Position Brief** consumed by all downstream stages.
+- **This is the most important step for freshers.** Without it, the resume tries to be everything.
+
+### Skill 13 — Recruiter Rejection Simulator (Phase 5.5)
+- Simulates 3 personas: 6-second scan, 30-second technical review, EM deep read.
+- Generates explicit **rejection reasons** (not scores) with fixes.
+- Runs AFTER the Critic. Checks subjective human reactions, not objective dimensions.
+- More valuable than an ATS score for predicting real-world callbacks.
+
+### Skill 14 — Fresher Signal Analyzer
+- Evaluates 9 fresher-specific hiring signals: CGPA, internship quality, DSA evidence, project depth, GitHub quality, certifications, hackathons, deployment, depth-vs-breadth.
+- Identifies the weakest signal and recommends improvement.
+- Determines when the resume is NOT the candidate's bottleneck.
+
+### Skill 15 — Application Strategy
+- Decides: Strong Apply / Standard Apply / Stretch Apply / Low Probability / Do Not Apply.
+- Prevents wasted applications on roles with <40% fit.
+- Recommends resume variant, effort level, and whether a cover letter is needed.
 
 ### Skill 10 — Writing Style Profiler
 - **2D Matrix** — Audience × Company Type — inferred from JD content:
@@ -306,13 +344,29 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 
 When you receive the inputs below, execute this workflow **step by step**:
 
+### Phase -1: Candidate Positioning (Skill 12) — NEW, RUNS FIRST
+1. Analyze candidate profile from INPUT 2.
+2. Classify into primary + secondary role families.
+3. Select core technical identity (8-12 technologies).
+4. Rank projects by role relevance.
+5. Determine skill section layout and certification selection.
+6. Output **Candidate Position Brief**.
+
 ### Phase 0: JD Intelligence (Skill 1)
 1. Build **Keyword Importance Graph**: Critical / Major / Minor tiers.
 2. Calculate current weighted match score.
 3. **Infer Writing Style Profile** from JD content (verbs, domain terms, responsibilities):
    - Audience Tier: Recruiter | Engineering Manager | Researcher
    - Company Type: Startup/OS | Enterprise/Big Tech | Research | DevTools
-4. Detect red flags. Output **JD Intelligence Briefing** for all downstream stages.
+4. Detect red flags.
+5. **Classify JD role family** and compare against Candidate Position Brief.
+6. Output **Technologies to Remove/Minimize** — skills that dilute role identity for this JD.
+7. Output **JD Intelligence Briefing** for all downstream stages.
+
+### Phase 0.5: Application Strategy (Skill 15) — NEW
+8. Using the Candidate Position Brief + JD Intelligence Briefing, determine application decision.
+9. If decision is ❌ Low Probability or 🚫 Do Not Apply, inform the candidate with reasons and stop.
+10. If decision is ✅ or ⚠️ or 🟡, proceed with the appropriate effort level.
 
 ### Phase 1: Evidence Extraction (Skills 1, GitHub Analyzer)
 5. If GitHub URLs provided (INPUT 3): analyze repo structure, extract tech stack, generate confidence-scored bullets.
@@ -337,12 +391,12 @@ When you receive the inputs below, execute this workflow **step by step**:
 
    **B. Education** (`\section{Education}`)
    - `\resumeSubheading{University}{Dates}{Degree, Major}{City, State}`
-   - GPA only if ≥ 3.5.
+   - GPA if ≥ 3.5/4.0 or CGPA if ≥ 8.0/10.0. Always include for Indian fresher resumes where CGPA > 8.0.
 
    **C. Experience** (`\section{Experience}`)
    - `\resumeSubheading{Company}{Dates}{Title}{City, State}`
    - 3-4 `\resumeItem{}` bullets per role.
-   - Every bullet follows X-Y-Z / STAR / CAR with at least one metric.
+   - Every bullet follows X-Y-Z / STAR / CAR / PACTI (selectively). Prefer metrics when evidence exists; use concrete implementation details when metrics aren't available.
    - Lead with bullets most relevant to JD.
    - Weave missing keywords naturally.
    - Use power verbs.
@@ -382,21 +436,27 @@ When you receive the inputs below, execute this workflow **step by step**:
     - ✅ Weighted match score ≥ 85%
 
 ### Phase 5: Resume Critic — Quality Gate (Skill 11)
-15. Score the complete resume on **9 dimensions**. If any fail, apply targeted rewrites and loop back to Phase 3 (max 3 loops).
+15. Score the complete resume on **10 dimensions**. If any fail, apply targeted rewrites and loop back to Phase 3 (max 3 loops).
 
 | Dimension | Target |
 |---|---|
-| ATS Compatibility | ≥95% |
-| Technical Specificity | ≥9/10 |
+| ATS Compatibility | Standard headers + `\pdfgentounicode=1` + no images (Pass/Fail) |
+| Technical Specificity | ≥8/10 |
 | Evidence Coverage | 100% |
 | AI Writing Score | ≤2/10 |
 | Recruiter Readability | ≥9/10 |
 | Interview Defensibility | 100% |
-| JD Match | ≥85% |
+| JD Match | Match-Gap Report (Required X/Y, Preferred X/Y, Missing: list) |
 | One-Page Compliance | Pass |
 | Truthfulness | 100% |
+| **Candidate Positioning** | **Clear role identity in 6 seconds; ≤15 technologies in skills section** |
 
-16. Run **3 Recruiter Personas** (Technical Recruiter / Engineering Manager / Hiring Manager) — qualitative feedback.
+16. Run **3 Recruiter Personas** (Technical Recruiter / Engineering Manager / Hiring Manager) — qualitative feedback. **For fresher candidates, calibrate expectations to entry-level.**
+
+### Phase 5.5: Recruiter Rejection Simulator (Skill 13) — NEW
+17. Execute `recruiter-rejection-simulator` on the complete resume.
+18. Run 3 simulations: 6-second scan, 30-second technical review, EM deep read.
+19. If any simulation produces a rejection, fix the identified issues and loop back to Phase 3.
 
 ### Phase 6: Output Delivery
 
@@ -441,13 +501,15 @@ Full compilable LaTeX from `\documentclass` to `\end{document}`. Drop into Overl
 2. **Jake's Template Only**: Output MUST use the exact LaTeX preamble and custom commands defined above. Do NOT modify `\resumeItem`, `\resumeSubheading`, `\resumeProjectHeading`, or any other custom command.
 3. **One Page Maximum**: The compiled PDF MUST fit on a single US Letter page. Enforce this by limiting bullet counts and using `\vspace` spacing controls.
 4. **No Summary Section**: Do NOT include a Professional Summary or Objective section.
-5. **No Relevant Coursework Section**: Omit to save space (unless the user is a recent graduate with no experience, then include).
-6. **Keywords Natural**: Include keywords naturally in achievement bullets, not just in the skills list.
-7. **Metrics Mandatory**: Every `\resumeItem{}` must contain at least one quantifiable metric.
+5. **Coursework — Conditional**: Include relevant coursework only for fresher roles where DSA/DBMS/OS are explicit screening criteria. Omit otherwise.
+6. **Keywords Natural**: Include keywords naturally in achievement bullets, not just in the skills list. Do not repeat keywords unnaturally.
+7. **Evidence over Metrics**: Use metrics when supported by real evidence. Real metric > qualified metric > concrete implementation detail > no metric. Never invent production numbers for development projects.
 8. **Industry Terms**: If the JD uses an acronym, expand it at least once.
 9. **Preserve Accuracy**: Do not alter dates, titles, or company names from the user's data.
 10. **LaTeX Special Characters**: Properly escape `&`, `%`, `$`, `#`, `_`, `{`, `}` in all content text.
 11. **Compilable Output**: The LaTeX code must compile without errors on a standard TeX distribution with the packages listed in the preamble.
+12. **Candidate Positioning**: Every resume must communicate a single identifiable role identity. Skills section should have ≤15 technologies. Projects must be ordered by role relevance, not chronology.
+13. **Optimize for recruiter decision quality**, not abstract ATS scores. A match-gap report is more actionable than "ATS 96%".
 
 ---
 
@@ -513,15 +575,19 @@ Other evidence sources (paste links or descriptions):
 
 > [!CAUTION]
 > **STRICT SKILL INVOCATION MANDATE FOR CLAUDE:**
-> If you have uploaded skills available (`jd-intelligence-analyzer`, `github-project-analyzer`, `engineering-evidence-database`, `resume-humanizer`, `resume-critic`), you **MUST EXPLICITLY INVOKE AND EXECUTE THEM** step-by-step. Do NOT generate the resume from memory or shortcuts.
+> If you have uploaded skills available (`candidate-positioning`, `jd-intelligence-analyzer`, `application-strategy`, `fresher-signal-analyzer`, `github-project-analyzer`, `engineering-evidence-database`, `resume-humanizer`, `resume-critic`, `recruiter-rejection-simulator`), you **MUST EXPLICITLY INVOKE AND EXECUTE THEM** step-by-step. Do NOT generate the resume from memory or shortcuts.
 
 Execute the pipeline in strict order and print each skill's scorecard/output:
 
-1. **Step 1: Execute `jd-intelligence-analyzer`** on INPUT 1 → Output the Keyword Importance Graph & Inferred 2D Writing Style Profile.
-2. **Step 2: Execute `github-project-analyzer` / `engineering-evidence-database`** on INPUT 2 & 3 → Output the Evidence Matrix & Confidence Scores.
-3. **Step 3: Generate PACTI Bullets** matching the Evidence Matrix.
-4. **Step 4: Execute `resume-humanizer`** → Run the 7-dimension scorecard on all bullets and print the Humanizer Report with any required rewrites.
-5. **Step 5: Execute `resume-critic`** → Run the 9-dimension audit gate (including Truthfulness Check and 3 Recruiter Personas) and print the full **Resume Audit Report**.
-6. **Step 6: Deliver Final Compilable LaTeX Code** only after all Critic dimensions pass (or loop back to Step 4 if any fail).
+1. **Step 1: Execute `candidate-positioning`** on INPUT 2 → Output the Candidate Position Brief (role family, core tech identity, project priority, skill layout).
+2. **Step 2: Execute `jd-intelligence-analyzer`** on INPUT 1 → Output the Keyword Importance Graph, Inferred 2D Writing Style Profile, Role Family Classification, and Technologies to Remove/Minimize.
+3. **Step 3: Execute `application-strategy`** → Determine application decision. If ❌ or 🚫, inform candidate and stop. Otherwise proceed.
+4. **Step 4: Execute `fresher-signal-analyzer`** (if candidate has ≤2 years experience) → Output Signal Analysis Report. Flag if resume is not the bottleneck.
+5. **Step 5: Execute `github-project-analyzer` / `engineering-evidence-database`** on INPUT 2 & 3 → Output the Evidence Matrix & Confidence Scores.
+6. **Step 6: Generate Bullets** using PACTI selectively for architecture decisions, X-Y-Z/CAR for implementation bullets. Use metrics only when evidence exists.
+7. **Step 7: Execute `resume-humanizer`** → Run the 7-dimension scorecard on all bullets and print the Humanizer Report with any required rewrites.
+8. **Step 8: Execute `resume-critic`** → Run the 10-dimension audit gate (including Truthfulness Check, Candidate Positioning, and 3 Recruiter Personas) and print the full **Resume Audit Report**.
+9. **Step 9: Execute `recruiter-rejection-simulator`** → Run 3 rejection simulations. Fix any flagged rejection reasons.
+10. **Step 10: Deliver Final Compilable LaTeX Code** only after all Critic dimensions pass AND all rejection simulations pass (or loop back to Step 7 if any fail).
 
 **Copy this entire prompt with your filled-in inputs and send to Claude.**

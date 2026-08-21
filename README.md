@@ -29,11 +29,14 @@ A highly optimized collection of AI agent skills and custom instructions focused
 
 ## ✨ Key Features
 
-- **20+ Specialized Agent Skills**: Comprehensive coverage of every stage in the job search funnel—from initial job description analysis to offer comparisons and salary negotiations.
-- **ATS-Optimized Blueprints**: Built-in instructions aligned with Applicant Tracking System standards to maximize your pass rates.
-- **The Ultimate LaTeX Mega-Prompt**: Generates beautiful, compilable LaTeX code based on **Jake's Template** (the gold standard for tech resumes).
+- **29 Specialized Agent Skills**: Comprehensive coverage of every stage — from candidate positioning and JD analysis to recruiter rejection simulation and offer comparison.
+- **Candidate-Positioning-First Pipeline**: Determines your role identity (SDE / AI-ML / Full Stack) *before* keyword optimization. The most important step for freshers.
+- **Evidence-Grounded Bullets**: Every resume bullet must be traceable to GitHub source code, project evidence, or verifiable experience. No fabricated metrics.
+- **Recruiter Rejection Simulator**: Simulates why a recruiter would reject your resume in 6 seconds — more useful than abstract ATS scores.
+- **Fresher Signal Analyzer**: Evaluates 9 hiring signals critical for new grads (CGPA, DSA, project depth, GitHub quality, deployment evidence).
+- **Application Strategy Engine**: Decides whether to apply at all, preventing wasted effort on poor-fit roles.
+- **The Ultimate LaTeX Mega-Prompt**: Generates compilable LaTeX using **Jake's Template** with a 10-step quality pipeline.
 - **Multi-Agent Compatibility**: Works natively with Cursor, Claude Code, Windsurf, Gemini, and 30+ other AI environments.
-- **Achievement-Focused Output**: Automatically translates weak "responsible for" duties into impact-driven STAR/XYZ metrics.
 
 ---
 
@@ -42,46 +45,68 @@ A highly optimized collection of AI agent skills and custom instructions focused
 Here is how the repository is structured to enable native, zero-configuration loading by multiple AI agents:
 
 ```text
-ResumeSkills/
-├── .cursor/
-│   └── skills/                  # Cursor-specific symlinks to skills
+resume-generator/
 ├── .agents/                     # Standardized agent directory
-│   └── skills/                  # Core skill definitions
+│   └── skills/                  # Mirrored skills for agent auto-loading
+├── .cursor/
+│   └── skills/                  # Cursor-specific symlinks
 ├── skills/                      # Source directories for each skill
+│   ├── candidate-positioning/   # NEW: Phase -1 — Role identity first
+│   ├── application-strategy/    # NEW: Apply or skip decision engine
+│   ├── fresher-signal-analyzer/  # NEW: 9-signal fresher profile scorer
+│   ├── recruiter-rejection-simulator/ # NEW: 6s/30s/EM rejection test
+│   ├── jd-intelligence-analyzer/
+│   ├── engineering-evidence-database/
+│   ├── github-project-analyzer/
+│   ├── resume-humanizer/
+│   ├── resume-critic/
 │   ├── resume-ats-optimizer/
-│   │   └── SKILL.md             # ATS optimizer rules & checklists
 │   ├── resume-bullet-writer/
-│   │   └── SKILL.md             # X-Y-Z and STAR statement frameworks
-│   └── ...                      # 18 other specialized skills
-├── ATS_RESUME_PROMPT.md         # The LaTeX Jake's Template Mega-Prompt
-├── CONTRIBUTING.md              # Guidelines for adding new skills
-├── LICENSE                      # MIT License file
-└── README.md                    # You are here!
+│   └── ...                      # 15 more specialized skills
+├── ATS_RESUME_PROMPT.md         # The LaTeX Mega-Prompt (10-step pipeline)
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
 ```
 
 ---
 
 ## 🛠️ The LaTeX Resume Mega-Prompt (`ATS_RESUME_PROMPT.md`)
 
-Located in the root directory, [ATS_RESUME_PROMPT.md](ATS_RESUME_PROMPT.md) is a **Claude Mega-Prompt** designed to generate a perfect one-page resume using **Jake Gutierrez's LaTeX Template** (famous on Reddit's r/EngineeringResumes).
+Located in the root directory, [ATS_RESUME_PROMPT.md](ATS_RESUME_PROMPT.md) is a **10-step pipeline** that generates a perfect one-page resume using **Jake Gutierrez's LaTeX Template**.
+
+### 🔄 Pipeline Architecture
+
+```
+Phase -1: Candidate Positioning     → "What kind of candidate are you?"
+Phase  0: JD Intelligence           → Keyword graph + style inference
+Phase 0.5: Application Strategy     → "Should you even apply?"
+Phase  1: Evidence Extraction        → GitHub analysis + evidence database
+Phase  2: Resume Audit               → Gap analysis against JD
+Phase  3: LaTeX Construction         → Build resume with Jake's template
+Phase  4: ATS Validation             → Standard headers + keyword check
+Phase  5: Critic Quality Gate        → 10-dimension scorecard
+Phase 5.5: Rejection Simulator       → 6s scan / 30s review / EM deep read
+Phase  6: Final Delivery             → LaTeX + Audit Report + Interview Pack
+```
 
 ### ❓ Why Jake's LaTeX Template?
-- **100% ATS Compliant**: Uses standard font structures, single-column design, and correct section headers.
-- **Predefined Macros**: Includes custom tags for quick rendering of experience (`\resumeSubheading`), projects (`\resumeProjectHeading`), and skills.
-- **Perfect Spacing**: Fine-tuned margins (`0.5 in`) to fit maximum professional density without looking cramped.
+- **100% ATS Compliant**: Standard font, single-column, correct section headers.
+- **Predefined Macros**: `\resumeSubheading`, `\resumeProjectHeading`, `\resumeItem`.
+- **Perfect Spacing**: Fine-tuned margins for maximum density without clutter.
 
 ### 📝 How to Use the Mega-Prompt:
 1. Open [ATS_RESUME_PROMPT.md](ATS_RESUME_PROMPT.md) and copy the entire text.
-2. Open a new chat session with your AI (Claude 3.5 Sonnet is highly recommended).
-3. Scroll to the bottom of the prompt and locate:
+2. Open a new chat session with your AI (Claude, Gemini, or Cursor).
+3. Fill in the 3 inputs at the bottom:
    - `INPUT 1: Job Description (JD)`
-   - `INPUT 2: Your Old Resume / Details`
-4. Paste the target Job Description and your current resume details in the designated slots.
-5. Send the prompt to the AI.
-6. The AI will output:
-   - **Compilable LaTeX Code**: Drop this directly into [Overleaf](https://www.overleaf.com/) to compile your beautiful resume.
-   - **Detailed Keyword Mapping**: A breakdown of target keywords, where they were added, and why.
-   - **Before/After Bullet Changelog**: Proof of how your experience bullets were upgraded.
+   - `INPUT 2: Your Resume / Details`
+   - `INPUT 3: Evidence Sources` (GitHub URLs recommended)
+4. Send the prompt. The AI will execute the 10-step pipeline and output:
+   - **Compilable LaTeX Code** — Drop into [Overleaf](https://www.overleaf.com/)
+   - **Resume Audit Report** — Bullet-by-bullet evidence + confidence scores
+   - **Recruiter Rejection Analysis** — Why a recruiter might reject you + fixes
+   - **Interview Preparation Pack** — Q&A pairs per bullet
 
 ---
 
@@ -93,26 +118,35 @@ Each skill in the `skills/` directory contains highly specialized prompt instruc
 
 | Category | Skill | Key Objective / Framework |
 | :--- | :--- | :--- |
-| 📈 **Resume Optimization** | `resume-ats-optimizer` | Checks formatting, solves ATS parsing failures, target score 80%+ |
-| | `resume-bullet-writer` | Converts passive duties into X-Y-Z metric-driven accomplishments |
-| | `resume-quantifier` | Discovers opportunities to inject dollar amounts, %, and volume metrics |
-| | `resume-formatter` | Enforces structural styling rules for clean, scannable layouts |
-| | `resume-section-builder` | Builds targeted custom sections optimized for specific experience levels |
-| 🎯 **Job Search Strategy** | `job-description-analyzer` | Computes weighted match score: `(Required × 0.70) + (Preferred × 0.30)` |
-| | `resume-tailor` | Tactically highlights authentic skills corresponding to a specific JD |
-| | `resume-version-manager` | Manages master resume variants and tracks tailored modifications |
-| | `offer-comparison-analyzer`| Compares multiple offers with side-by-side total compensation models |
-| ✉️ **Supporting Documents** | `cover-letter-generator` | Drafts punchy, non-generic cover letters tying experience to JD goals |
-| | `linkedin-profile-optimizer`| Optimizes LinkedIn headlines, summaries, and search terms |
-| | `portfolio-case-study-writer`| Converts resume bullets into structured, in-depth portfolio articles |
-| | `reference-list-builder` | Prepares reference documents and prep sheets for prospective callers |
-| 🗣️ **Interview & Salary** | `interview-prep-generator` | Generates situational STAR answers, practice questions, and prep guides |
-| | `salary-negotiation-prep` | Creates market-rate research scripts, counter-offers, and scripts |
-| 💼 **Specialized Paths** | `tech-resume-optimizer` | Customized for Software Engineers, Product Managers, and Tech Leads |
-| | `executive-resume-writer` | Highlights C-suite/VP strategic leadership, P&L, and org scale |
-| | `career-changer-translator`| Translates legacy jargon into target industry transferable skills |
-| | `academic-cv-builder` | Organizes publication histories, grant awards, and teaching portfolios |
-| | `creative-portfolio-resume`| Balances creative aesthetic design with ATS parsability |
+| 🎯 **Positioning & Strategy** | `candidate-positioning` | **NEW** — Determines role identity (SDE/AI-ML/Full Stack) before any optimization |
+| | `application-strategy` | **NEW** — Apply/Skip decision engine with fit assessment |
+| | `fresher-signal-analyzer` | **NEW** — 9-signal fresher profile scorer (CGPA, DSA, GitHub quality, etc.) |
+| | `recruiter-rejection-simulator` | **NEW** — 6s/30s/EM rejection simulation with fixes |
+| 📊 **Evidence Pipeline** | `jd-intelligence-analyzer` | Keyword importance graph + role family classification + style inference |
+| | `engineering-evidence-database` | 15-field evidence schema for traceable bullets |
+| | `github-project-analyzer` | Extracts verified tech stack + confidence-scored bullets from repos |
+| 📝 **Resume Generation** | `resume-humanizer` | 7-dimension scoring to remove AI patterns + apply engineering prose |
+| | `resume-critic` | 10-dimension quality gate including Truthfulness + Candidate Positioning |
+| | `resume-bullet-writer` | PACTI (selective) + X-Y-Z + CAR bullet frameworks |
+| | `resume-quantifier` | Evidence-first metrics; fresher-specific guidance against fake numbers |
+| | `resume-ats-optimizer` | ATS parsing + keyword placement (natural, not repetitive) |
+| | `resume-formatter` | Jake's template structural rules |
+| | `resume-section-builder` | Section ordering + conditional coursework rules |
+| | `resume-tailor` | Role-specific highlighting of true experience |
+| | `resume-version-manager` | Master resume + variant tracking |
+| 🎯 **Job Search** | `job-description-analyzer` | Weighted match score computation |
+| | `offer-comparison-analyzer` | Side-by-side total compensation models |
+| ✉️ **Supporting Documents** | `cover-letter-generator` | Non-generic cover letters tied to JD goals |
+| | `linkedin-profile-optimizer` | Headlines, summaries, search optimization |
+| | `portfolio-case-study-writer` | Resume bullets → detailed portfolio case studies |
+| | `reference-list-builder` | Reference prep and formatting |
+| 🗣️ **Interview & Salary** | `interview-prep-generator` | STAR answers, practice questions, prep guides |
+| | `salary-negotiation-prep` | Market research, counter-offer scripts |
+| 💼 **Specialized Paths** | `tech-resume-optimizer` | SWE, PM, Tech Lead specific |
+| | `executive-resume-writer` | C-suite/VP strategic leadership |
+| | `career-changer-translator` | Cross-industry skill translation |
+| | `academic-cv-builder` | Publications, grants, teaching |
+| | `creative-portfolio-resume` | Creative design + ATS balance |
 
 ---
 

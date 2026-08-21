@@ -15,25 +15,26 @@ Trigger phrases: "review my resume", "final check", "quality gate", "score my re
 
 ## Core Principle
 
-> **The resume does not ship until all 9 dimensions pass.**
+> **The resume does not ship until all 10 dimensions pass.**
 > The Critic is not advisory — it controls whether the pipeline outputs a final PDF or loops back for revision.
 > One failing dimension triggers a targeted rewrite, not a full regeneration.
 
 ---
 
-## 9-Dimension Scorecard
+## 10-Dimension Scorecard
 
 | # | Dimension | Target | Fail Condition |
 |---|---|---|---|
-| 1 | ATS Compatibility | ≥95% | Non-standard section headers; tables or images in body; `\pdfgentounicode=1` missing |
-| 2 | Technical Specificity | ≥9/10 | Any bullet with no named technology, algorithm, system, or design pattern |
+| 1 | ATS Compatibility | Pass/Fail | Non-standard section headers; tables or images in body; `\pdfgentounicode=1` missing |
+| 2 | Technical Specificity | ≥8/10 | Any bullet with no named technology, algorithm, system, or design pattern |
 | 3 | Evidence Coverage | 100% | Any bullet without a traceable field in the Engineering Evidence Database or GitHub source |
 | 4 | AI Writing Score | ≤2/10 | More than 2 flagged cliché words across the full resume OR any word from the "should never appear" list |
 | 5 | Recruiter Readability | ≥9/10 | Any bullet longer than 2 rendered lines; jargon used without context; unclear what the candidate did |
 | 6 | Interview Defensibility | 100% | Any bullet without a corresponding Q&A pair in the evidence database |
-| 7 | JD Match | ≥85% | Any Critical-tier keyword from the JD Intelligence Briefing absent from the resume |
+| 7 | JD Match | Match-Gap Report | Any Critical-tier keyword from the JD Intelligence Briefing absent from the resume; report shows Required X/Y, Preferred X/Y, Missing list |
 | 8 | One-Page Compliance | Pass | LaTeX line estimate overflows a single US Letter page |
 | 9 | **Truthfulness** | **100%** | **Any bullet where wording overstates or misrepresents its evidence** |
+| 10 | **Candidate Positioning** | **Clear** | **Resume does not communicate a single role identity in 6 seconds; skills section has >15 technologies; projects not ordered by role relevance** |
 
 ---
 
@@ -78,9 +79,37 @@ This is the most nuanced dimension and requires explicit evaluation.
 
 ---
 
+## Dimension 10: Candidate Positioning Check
+
+This dimension verifies that the resume communicates a clear role identity.
+
+### Positioning Fail Conditions
+
+1. **Skills section has >15 technologies** — Signal dilution. The recruiter can't identify what this candidate is good at.
+2. **Projects are not ordered by role relevance** — The first project should be the strongest match for the JD role family.
+3. **No clear primary technology area** — The resume spreads across AI/ML, Full Stack, DevOps, Cloud, and Data without depth in any.
+4. **Certifications don't align with role** — 5 AI certifications on an SDE resume, or AWS certs on a frontend role.
+5. **The 6-second test fails** — A recruiter scanning for 6 seconds cannot identify: (a) what role this candidate fits, (b) their primary tech stack, (c) their strongest project.
+
+### Positioning Check Output
+
+```markdown
+### Candidate Positioning Check
+
+**Role Identity (6-second test):** [CLEAR / UNCLEAR]
+**Primary tech visible in 6s:** [Yes / No — what's visible instead?]
+**Skills count:** [N technologies — Pass if ≤15, Fail if >15]
+**Project order:** [Correct for role / Incorrect — should be reordered]
+**Certification alignment:** [Aligned / Misaligned]
+```
+
+---
+
 ## 3 Recruiter Personas
 
-After scoring the 9 dimensions, simulate three independent readers. Each reads the resume for 30 seconds (6-second scan + re-read) and answers 3 questions.
+After scoring the 10 dimensions, simulate three independent readers. Each reads the resume for 30 seconds (6-second scan + re-read) and answers 3 questions.
+
+> **Fresher Calibration:** When the candidate has ≤2 years experience, all personas must calibrate expectations to entry-level. Do not penalize for lack of production-scale metrics, limited team leadership, or narrow experience breadth. DO penalize for fake metrics, scope overstatement, and unclear positioning.
 
 ### Persona 1: Technical Recruiter
 *Primary concern: Is this resume readable in 6 seconds? Does the tech stack match the JD?*
@@ -132,21 +161,22 @@ This report is delivered alongside the LaTeX file. It serves as the candidate's 
 
 ---
 
-### 9-Dimension Scores
+### 10-Dimension Scores
 
 | Dimension | Score | Status |
 |---|---|---|
-| ATS Compatibility | 97% | ✅ Pass |
+| ATS Compatibility | Pass | ✅ Pass |
 | Technical Specificity | 9.5/10 | ✅ Pass |
 | Evidence Coverage | 80% | ❌ FAIL — Bullet 5 uncited |
 | AI Writing Score | 1/10 | ✅ Pass |
 | Recruiter Readability | 9/10 | ✅ Pass |
 | Interview Defensibility | 80% | ❌ FAIL — Bullet 4 missing Q&A |
-| JD Match | 88% | ✅ Pass |
+| JD Match | Required: 8/10, Preferred: 4/6, Missing: [list] | ✅ Pass |
 | One-Page Compliance | Pass | ✅ Pass |
 | Truthfulness | 80% | ❌ FAIL — Bullet 4 overstates scope |
+| Candidate Positioning | Clear | ✅ Pass |
 
-**Dimensions Passed: 6/9**
+**Dimensions Passed: 7/10**
 
 ---
 
@@ -182,7 +212,7 @@ For each kept bullet, the Q&A pairs from the evidence database are surfaced here
 
 **Bullet 1 — Isolation Forest anomaly detection**
 - Q: Why Isolation Forest over DBSCAN?
-- A: The log data was entirely unlabeled. DBSCAN requires density assumptions that don't hold in sparse log distributions.
+- A: The log data was entirely unlabeled. DBSCAN requires density-based assumptions that don't generalize well to varying log volumes, whereas Isolation Forest works well on high-dimensional unlabeled data and is more robust to sparse distributions.
 
 **Bullet 2 — FastAPI backend**
 - Q: Why FastAPI over Flask?
@@ -195,14 +225,14 @@ For each kept bullet, the Q&A pairs from the evidence database are surfaced here
 
 ## Loop-Back Logic
 
-If any of the 9 dimensions fails:
+If any of the 10 dimensions fails:
 
 1. Output the failing dimension name and the specific bullets causing the failure
 2. Output targeted rewrite instructions (do NOT regenerate the entire resume)
 3. Send rewrites back to the Humanizer skill for re-scoring
 4. After Humanizer pass: re-run ATS Validator
 5. After ATS Validator pass: re-run Critic
-6. Repeat until all 9 dimensions pass
+6. Repeat until all 10 dimensions pass
 
 **Maximum loops:** 3. If dimensions still fail after 3 loops, flag for human review with a note explaining what evidence is missing or insufficient.
 
@@ -214,4 +244,5 @@ If any of the 9 dimensions fails:
 2. **Targeted rewrites only.** Never regenerate the entire resume because one bullet fails. Identify exactly which bullet fails and why.
 3. **Truthfulness overrides Confidence.** A bullet at 100% confidence can still fail Truthfulness if the wording exaggerates the evidence.
 4. **The Audit Report is always generated**, even on a passing run. It serves as the candidate's interview prep document regardless of pass/fail status.
-5. **Persona feedback is opinion, not score.** Persona opinions do not affect the 9-dimension scores — they provide qualitative signal on top of quantitative scoring.
+5. **Persona feedback is opinion, not score.** Persona opinions do not affect the 10-dimension scores — they provide qualitative signal on top of quantitative scoring.
+6. **For fresher candidates, calibrate persona expectations.** Don't penalize for lack of production metrics or team leadership. DO penalize for fake metrics and scope overstatement.
