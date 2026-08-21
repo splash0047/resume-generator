@@ -11,3 +11,7 @@ desktop.ini
 *.njsproj
 *.sln
 *.swp
+
+# Build & archive files
+*.zip
+
