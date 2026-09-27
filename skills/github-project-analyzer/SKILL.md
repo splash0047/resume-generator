@@ -60,19 +60,26 @@ Scan imports and class/function names in core source files to identify:
 
 ---
 
-## Phase B: Confidence Score Assignment
+## Phase B: Evidence Strength Assignment
 
-Every claim extracted from the repository receives a confidence score before being used in a bullet.
+A source-code hit proves only the claim that the source actually supports. Do not convert an import, class name, or dependency entry into a universal "100% confidence" score.
 
-| Confidence | Source Quality | Example |
+For every candidate claim, record four independent fields:
+
+| Field | Values | Meaning |
 |---|---|---|
-| **100%** | Directly cited — specific file + import/class/function found | `from sklearn.ensemble import IsolationForest` in `detector.py` |
-| **80%** | File exists with clear purpose, specific content verified | `Dockerfile` present with multi-stage build |
-| **65%** | README description only — not verified in source code | README says "uses Redis for caching" but no source file checked |
-| **25%** | Inferred from directory name or partial evidence | `/ml/` folder exists but no specific algorithm identified |
-| **0%** | Cannot be sourced to any file or document | Do not generate this bullet |
+| **Implementation evidence** | Direct / Partial / README-only / None | Is the feature visibly implemented in source or config? |
+| **Execution evidence** | Tested / CI-tested / Demo-visible / Unverified | Is there evidence the implementation runs? |
+| **Ownership evidence** | Documented / User-confirmed / Unknown | Does the evidence support the candidate's personal contribution? |
+| **Impact evidence** | Measured / Qualified benchmark / Descriptive only / None | Is the claimed outcome actually measured? |
 
-**Rule:** Bullets with ≤40% confidence are **flagged for user review**, not automatically included. The user decides whether to include them with an explicit qualifier (e.g., "Explored..." or "Implemented basic...").
+Examples:
+- An import of `IsolationForest` = direct evidence that the dependency is referenced, **not** proof that anomaly detection works end-to-end.
+- A `Dockerfile` = direct evidence of containerization configuration, **not** proof of scalable production deployment.
+- A README benchmark = README-only impact evidence until the benchmark artifact or reproducible output is verified.
+- A passing test or CI workflow strengthens execution evidence but does not establish business impact or personal ownership.
+
+**Inclusion rule:** A resume bullet may be auto-generated when its core implementation claim has Direct evidence and its wording does not exceed the verified execution/impact evidence. Claims relying only on README text, inferred folders, or unknown ownership must be flagged for confirmation.
 
 ---
 
@@ -145,8 +152,8 @@ Grade the repository on 6 dimensions. Output a score (0–10) and a 1-line findi
 ## Phase D: Evidence-Backed Bullet Generation
 
 Generate resume bullets only from verified evidence. Every bullet must include:
-1. The bullet text (using PACTI formula where possible)
-2. The confidence score
+1. The bullet text (using PACTI formula where useful)
+2. Implementation, execution, ownership, and impact evidence status
 3. The source file citation
 
 ### Output Format
@@ -170,20 +177,16 @@ Generate resume bullets only from verified evidence. Every bullet must include:
 | Containerized the application using Docker with a multi-stage build, separating dev and production environments | 80% | Dockerfile |
 | Implemented semantic log retrieval using FAISS vector store to provide relevant historical context to the LLM RCA agent | 95% | src/retrieval/store.py |
 
-### Flagged for Review (Confidence ≤ 40%)
-| Claim | Confidence | Issue |
-|---|---|---|
-| "Reduced incident investigation time from 20 to 3 minutes" | 25% | README mentions this metric but no benchmark script found |
-> ⚠️ Include this bullet only if you can verify the metric and defend it in an interview.
-```
+### Flagged for Review
+Claims with README-only implementation, unknown ownership, or unverified impact must be separated from auto-included bullets and explicitly confirmed by the candidate before use.
 
 ---
 
 ## Rules
 
-1. **Every bullet must cite its source.** If a claim cannot be traced to a file, import, README section, or configuration entry, it must be flagged — not included.
+1. **Every bullet must cite its source.** If a claim cannot be traced to a file, test, configuration, benchmark, README section, or user-confirmed experience record, it must be flagged — not included.
 
-2. **Confidence is assigned per claim, not per project.** A single project can have bullets at 100% and 25% simultaneously.
+2. **Evidence is multi-dimensional.** Implementation, execution, ownership, and impact must not be collapsed into one numeric confidence score.
 
 3. **Never fabricate deployment metrics.** If the project was never in production, classify its impact as `development` or `research` and qualify any metrics with "during local benchmarking" or "on test dataset."
 
