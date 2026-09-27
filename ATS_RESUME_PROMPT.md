@@ -257,14 +257,14 @@ I — Impact:                What measurably changed? Qualify by impact_type.
   - **Real evidence** → Use metric with appropriate qualifier
   - **No evidence** → Describe implementation concretely, skip the metric
   - **Never invent a percentage just to satisfy metric density**
-- Estimation when exact numbers unavailable: use ranges ("8–12"), conservative estimates, or minimums ("100+").
+- When exact numbers are unavailable, locate real evidence (tests, logs, benchmarks, repository-visible counts) or omit the metric. Do not estimate a resume number merely to make the bullet stronger.
 - **Never invent production metrics for development or learning projects.**
 - **Evidence Hierarchy:** Real metric > qualified metric > concrete implementation detail > no metric.
 - A bullet like "Built RBAC authentication using JWT and Express middleware" is better than "Improved authentication performance by 37%" when that 37% is unverifiable.
 
 ### Skill 6 — Resume Formatter (Jake's Template Specifics)
 - **Page Length**: Prefer one page for this fresher workflow. Remove low-value content before tightening spacing. Use `\vspace{-Xpt}` conservatively and keep the exported text readable.
-- **Font**: LaTeX Computer Modern (default, ATS-safe).
+- **Font**: LaTeX Computer Modern (default and widely readable).
 - **Section Headers**: `\section{}` with `\scshape\raggedright\large\bfseries` and `\titlerule`.
 - **Bullet Hierarchy**: `\resumeItem{}` inside `\resumeItemListStart...\resumeItemListEnd`.
 
@@ -278,15 +278,15 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 - If the JD uses an acronym (CI/CD, REST API, SaaS), expand it at least once in the resume.
 
 ### Skill 9 — Humanizer (Style Checker)
-- **7-dimension scoring** — all must meet target before LaTeX generation:
-  1. AI Buzzword Score ≤2/10
-  2. Specificity Score ≥8/10 (every bullet names ≥1 technology/algorithm/system)
-  3. Evidence Score 10/10 (every bullet traceable to evidence source)
-  4. Metric Density ≥5/10 (prefer real metrics; concrete technical details count toward this score when metrics aren't available)
-  5. Technical Density ≥6/10 (PACTI "Core Technical Decision" recommended but not mandatory for every bullet; direct implementation statements with named technologies also score well)
-  6. Readability ≥8/10 (max 1 adjective, no filler words, ≤2 lines)
-  7. Interview Defensibility 10/10 (every bullet has a Q\&A pair)
-- This is a **style checker, not a word filter.** Flag overuse; do not hard-block words.
+- Run qualitative checks for:
+  1. Natural engineering prose
+  2. Technical specificity
+  3. Evidence preservation
+  4. Readability
+  5. Role relevance
+  6. Interview defensibility
+- Metrics are optional and only used with provenance.
+- This is a **style checker, not an AI-detector score or banned-word game.**
 - Writing tone is set by the inferred style profile from Skill 1.
 
 ### Skill 12 — Candidate Positioning (Phase -1)
@@ -297,10 +297,10 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 - **This is the most important step for freshers.** Without it, the resume tries to be everything.
 
 ### Skill 13 — Recruiter Rejection Simulator (Phase 5.5)
-- Simulates 3 personas: 6-second scan, 30-second technical review, EM deep read.
-- Generates explicit **rejection reasons** (not scores) with fixes.
-- Runs AFTER the Critic. Checks subjective human reactions, not objective dimensions.
-- More valuable than an ATS score for predicting real-world callbacks.
+- Reviews the resume from recruiter and engineering-manager perspectives.
+- Generates explicit **reader risks and misunderstandings** with fixes.
+- Runs AFTER the Critic and provides qualitative editorial feedback.
+- It does not predict rejection, callbacks, or interview outcomes.
 
 ### Skill 14 — Fresher Signal Analyzer
 - Evaluates 9 fresher-specific hiring signals: CGPA, internship quality, DSA evidence, project depth, GitHub quality, certifications, hackathons, deployment, depth-vs-breadth.
@@ -308,9 +308,9 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 - Determines when the resume is NOT the candidate's bottleneck.
 
 ### Skill 15 — Application Strategy
-- Decides: Strong Apply / Standard Apply / Stretch Apply / Low Probability / Do Not Apply.
-- Prevents wasted applications on roles with <40% fit.
-- Recommends resume variant, effort level, and whether a cover letter is needed.
+- Checks hard eligibility before tailoring.
+- Classifies applications as Prioritize / Prioritize with targeted edits / Stretch / Low priority.
+- Recommends resume variant, effort level, and evidence gaps without assigning hiring probabilities.
 
 ### Skill 10 — Writing Style Profiler
 - **2D Matrix** — Audience × Company Type — inferred from JD content:
@@ -325,17 +325,18 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 
 ### Skill 11 — Resume Critic (Quality Gate)
 - **Final evidence and quality gates** — material issues must be resolved before delivery:
-  1. ATS Compatibility ≥95%
-  2. Technical Specificity ≥9/10
-  3. Evidence Coverage 100%
-  4. Natural engineering prose without inflated or generic wording
-  5. Recruiter Readability ≥9/10
-  6. Interview Defensibility 100%
-  7. JD Match ≥85%
-  8. One-Page Compliance: Pass
-  9. **Truthfulness 100%** — wording must accurately reflect evidence, not overstate it
-- **Loop-back:** Failing dimensions trigger targeted rewrites (not full regeneration). Max 3 loops.
-- **Resume Audit Report** is always produced alongside LaTeX — even on a passing run.
+  1. Eligibility visibility
+  2. Parsing safety
+  3. Evidence coverage
+  4. Truthfulness
+  5. Metric provenance
+  6. Role relevance
+  7. Readability
+  8. Interview defensibility
+  9. Repository consistency
+  10. Export validation
+- **Loop-back:** Material issues trigger targeted rewrites rather than unrelated regeneration.
+- **Resume Audit Report** is always produced alongside LaTeX.
 
 ---
 
