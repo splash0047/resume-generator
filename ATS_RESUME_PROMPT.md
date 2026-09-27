@@ -4,7 +4,7 @@
 > Fill in the three `[PASTE HERE]` sections at the bottom with your data
 > (Job Description + Your Resume Details + GitHub URLs), then send.
 > Claude will return: (1) compilable LaTeX resume, (2) Resume Audit Report
-> with bullet-by-bullet evidence + confidence scores, (3) Interview Q\&A pack.
+> with bullet-by-bullet evidence provenance, (3) Interview Q\&A pack.
 
 ---
 
@@ -184,8 +184,8 @@ Apply these specialized frameworks at the appropriate workflow stage.
 - **The 5-Stage Hiring Funnel:**
   1. ATS Parsing (standard headers, no images, `\pdfgentounicode=1`)
   2. Keyword Filtering (Critical keywords should appear at least once in context)
-  3. LLM/AI Ranking (context-rich sentences beat keyword density)
-  4. Recruiter Review (readable in 6 seconds)
+  3. Employer-specific screening/review (configuration varies by employer)
+  4. Recruiter Review (role identity and evidence should be easy to identify quickly)
   5. Hiring Manager / Technical Screen
 - Optimize for machine readability and requirement evidence without assuming every employer uses the same ranking method.
 - **Fresher Note:** On a short 1-page resume, do not target keyword repetition counts. Mention relevant terms naturally where they are supported by skills, experience, or projects.
@@ -324,11 +324,11 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 - Apply tone, verb preferences, and emphasis from the matched cell to all bullets.
 
 ### Skill 11 — Resume Critic (Quality Gate)
-- **9-dimension scorecard** — resume does not ship until all pass:
+- **Final evidence and quality gates** — material issues must be resolved before delivery:
   1. ATS Compatibility ≥95%
   2. Technical Specificity ≥9/10
   3. Evidence Coverage 100%
-  4. AI Writing Score ≤2/10
+  4. Natural engineering prose without inflated or generic wording
   5. Recruiter Readability ≥9/10
   6. Interview Defensibility 100%
   7. JD Match ≥85%
@@ -353,7 +353,7 @@ When you receive the inputs below, execute this workflow **step by step**:
 
 ### Phase 0: JD Intelligence (Skill 1)
 1. Build **Keyword Importance Graph**: Critical / Major / Minor tiers.
-2. Calculate current weighted match score.
+2. Build the requirement-to-evidence matrix and hard-eligibility check.
 3. **Infer Writing Style Profile** from JD content (verbs, domain terms, responsibilities):
    - Audience Tier: Recruiter | Engineering Manager | Researcher
    - Company Type: Startup/OS | Enterprise/Big Tech | Research | DevTools
@@ -378,7 +378,7 @@ When you receive the inputs below, execute this workflow **step by step**:
    - ✅ Present (note where)
    - ❌ Missing (flag for addition if truthful)
    - ⚠️ Partial match (synonym exists but exact phrase missing)
-10. Calculate **current match score** (weighted: Critical 0.60 + Major 0.30 + Minor 0.10).
+10. Summarize required/preferred criteria as Direct / Indirect / Missing evidence; do not convert this into a universal match score.
 11. Plan which experiences, projects to emphasize, reorder, add, or remove.
 
 ### Phase 3: LaTeX Resume Construction
@@ -432,7 +432,7 @@ When you receive the inputs below, execute this workflow **step by step**:
     - ✅ Standard section names used
     - ✅ No images or graphics (fontawesome icons in heading only)
     - ✅ All Critical-tier JD keywords present 2–4× naturally across sections
-    - ✅ Weighted match score ≥ 85%
+    - ✅ Required criteria are represented truthfully; any missing/indirect evidence is explicitly reported
 
 ### Phase 5: Resume Critic — Quality Gate (Skill 11)
 15. Score the complete resume on **10 dimensions**. If any fail, apply targeted rewrites and loop back to Phase 3 (max 3 loops).
@@ -442,19 +442,19 @@ When you receive the inputs below, execute this workflow **step by step**:
 | ATS Compatibility | Standard headers + `\pdfgentounicode=1` + no images (Pass/Fail) |
 | Technical Specificity | ≥8/10 |
 | Evidence Coverage | 100% |
-| AI Writing Score | ≤2/10 |
+| Natural language | No inflated/generic wording; evidence preserved |
 | Recruiter Readability | ≥9/10 |
 | Interview Defensibility | 100% |
 | JD Match | Match-Gap Report (Required X/Y, Preferred X/Y, Missing: list) |
 | One-Page Compliance | Pass |
 | Truthfulness | 100% |
-| **Candidate Positioning** | **Clear role identity in 6 seconds; ≤15 technologies in skills section** |
+| **Candidate Positioning** | **Clear role family; focused skills and project ordering without arbitrary technology-count limits** |
 
 16. Run **3 Recruiter Personas** (Technical Recruiter / Engineering Manager / Hiring Manager) — qualitative feedback. **For fresher candidates, calibrate expectations to entry-level.**
 
 ### Phase 5.5: Recruiter Rejection Simulator (Skill 13) — NEW
 17. Execute `recruiter-rejection-simulator` on the complete resume.
-18. Run 3 simulations: 6-second scan, 30-second technical review, EM deep read.
+18. Run qualitative reader-risk reviews from recruiter and engineering-manager perspectives.
 19. If any simulation produces a rejection, fix the identified issues and loop back to Phase 3.
 
 ### Phase 6: Output Delivery
@@ -474,7 +474,7 @@ Full compilable LaTeX from `\documentclass` to `\end{document}`. Drop into Overl
 | 2 | [truncated] | README only | 65% | development | How measured? | ⚠️ reword |
 
 ### 9-Dimension Scores
-[Scorecard table]
+[Final gate table: Pass / Needs revision with evidence and required fixes]
 
 ### Recruiter Persona Feedback
 [Per-persona qualitative notes]
@@ -576,17 +576,17 @@ Other evidence sources (paste links or descriptions):
 > **STRICT SKILL INVOCATION MANDATE FOR CLAUDE:**
 > If you have uploaded skills available (`candidate-positioning`, `jd-intelligence-analyzer`, `application-strategy`, `fresher-signal-analyzer`, `github-project-analyzer`, `engineering-evidence-database`, `resume-humanizer`, `resume-critic`, `recruiter-rejection-simulator`), you **MUST EXPLICITLY INVOKE AND EXECUTE THEM** step-by-step. Do NOT generate the resume from memory or shortcuts.
 
-Execute the pipeline in strict order and print each skill's scorecard/output:
+Execute the pipeline in strict order and print each skill's evidence/gate output:
 
 1. **Step 1: Execute `candidate-positioning`** on INPUT 2 → Output the Candidate Position Brief (role family, core tech identity, project priority, skill layout).
 2. **Step 2: Execute `jd-intelligence-analyzer`** on INPUT 1 → Output the Keyword Importance Graph, Inferred 2D Writing Style Profile, Role Family Classification, and Technologies to Remove/Minimize.
 3. **Step 3: Execute `application-strategy`** → Determine application decision. If ❌ or 🚫, inform candidate and stop. Otherwise proceed.
 4. **Step 4: Execute `fresher-signal-analyzer`** (if candidate has ≤2 years experience) → Output Signal Analysis Report. Flag if resume is not the bottleneck.
-5. **Step 5: Execute `github-project-analyzer` / `engineering-evidence-database`** on INPUT 2 & 3 → Output the Evidence Matrix & Confidence Scores.
+5. **Step 5: Execute `github-project-analyzer` / `engineering-evidence-database`** on INPUT 2 & 3 → Output the Evidence Matrix with implementation, execution, ownership, and impact provenance.
 6. **Step 6: Generate Bullets** using PACTI selectively for architecture decisions, X-Y-Z/CAR for implementation bullets. Use metrics only when evidence exists.
-7. **Step 7: Execute `resume-humanizer`** → Run the 7-dimension scorecard on all bullets and print the Humanizer Report with any required rewrites.
+7. **Step 7: Execute `resume-humanizer`** → Run the qualitative natural-language/evidence checklist on all bullets and print required rewrites.
 8. **Step 8: Execute `resume-critic`** → Run the 10-dimension audit gate (including Truthfulness Check, Candidate Positioning, and 3 Recruiter Personas) and print the full **Resume Audit Report**.
 9. **Step 9: Execute `recruiter-rejection-simulator`** → Run 3 rejection simulations. Fix any flagged rejection reasons.
-10. **Step 10: Deliver Final Compilable LaTeX Code** only after all Critic dimensions pass AND all rejection simulations pass (or loop back to Step 7 if any fail).
+10. **Step 10: Deliver Final Compilable LaTeX Code** only after all material Critic issues are resolved and reader-risk review has no unresolved evidence/clarity problems (loop back to Step 7 for targeted fixes).
 
 **Copy this entire prompt with your filled-in inputs and send to Claude.**
