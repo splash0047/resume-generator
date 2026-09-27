@@ -244,15 +244,17 @@ Want to build your own custom career workflows? You can create a new skill in 3 
 ## 📊 Why These Skills Matter
 
 > [!IMPORTANT]
-> The job application landscape is highly competitive.
-> - Over **75% of resumes** are automatically filtered out by ATS parsers before reaching a human.
-> - An average corporate job posting receives over **250 applications**.
-> - Most candidates fail to quantify their achievements, leading to lower callbacks.
+> Applicant review is not governed by one universal ATS score. Employers may use parsing, recruiter-defined screening criteria, application questions, human review, assessments, or combinations of these steps.
 
-These skills are designed specifically to bridge this gap. By utilizing structured frameworks (like STAR and XYZ) and optimizing syntax for standard ATS compilers, applicants can experience:
-- **2x to 3x more interview requests** per application cycle.
-- A **faster overall job search** (saving an average of 2 months of effort).
-- Greater confidence during negotiations, leading to **higher overall starting offers**.
+These skills are designed to improve the parts a candidate can control:
+- keep the resume machine-readable and easy to review;
+- map each job requirement to truthful, visible evidence;
+- separate hard eligibility requirements from preferred qualifications;
+- use metrics only when the candidate can explain how they were measured;
+- validate the exported PDF instead of trusting a self-generated "ATS score";
+- track real application outcomes so the workflow can be improved from evidence rather than assumptions.
+
+No skill in this repository should promise a callback rate, interview multiplier, or universal ATS threshold.
 
 ---
 
