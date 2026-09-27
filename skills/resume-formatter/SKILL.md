@@ -1,6 +1,6 @@
 ---
 name: Resume Formatter
-description: Ensure ATS-friendly formatting and create clean scannable layouts
+description: Ensure parsing-friendly formatting and create clean scannable layouts
 ---
 
 # Resume Formatter
@@ -28,7 +28,7 @@ Use this skill when the user:
 ### The Dual Audience Challenge
 
 Your resume must work for:
-1. **ATS (Applicant Tracking Systems)** - Robots that parse text
+1. **Automated parsing systems** - Software that may extract resume text into structured fields
 2. **Human Readers** - Recruiters who scan quickly
 
 **The Solution:** Clean, simple formatting that satisfies both.
@@ -47,7 +47,7 @@ Your resume must work for:
 
 ### Font Selection
 
-**Safe, ATS-Friendly Fonts:**
+**Safe, Parsing-Friendly Fonts:**
 - **Sans-serif:** Arial, Calibri, Helvetica, Verdana
 - **Serif:** Times New Roman, Georgia, Garamond
 
@@ -62,7 +62,7 @@ Your resume must work for:
 - **Space after paragraphs:** 6-12pt
 - **Section spacing:** 12-16pt between sections
 
-## ATS-Safe Formatting Rules
+## Common Readable Formatting Rules
 
 ### DO:
 - ✅ Use standard fonts
@@ -215,7 +215,7 @@ JavaScript       Node.js          Docker
 SQL              Django           Git
 ```
 
-**Note:** Multi-column layouts may cause ATS issues. Test before using.
+**Note:** Multi-column layouts can produce inconsistent extraction in some parsers. Test the exported file before using.
 
 ## Education Section Formatting
 
@@ -288,7 +288,7 @@ MBA, Finance & Strategy | Stanford Graduate School of Business | 2020
 ## File Format Guidelines
 
 ### For Online Applications
-- **.docx** - Best for ATS parsing
+- **.docx / text-based PDF** - Follow the employer's requested format and verify extraction
 - **.pdf** - Good if created from Word (not scanned)
 
 ### For Email/Direct Send

@@ -81,7 +81,7 @@ Sales professional transitioning to Customer Success, bringing 5 years of consul
 SKILLS
 Python, JavaScript, SQL, React, Node.js, AWS, Docker, Git, Agile, JIRA
 ```
-Best for: ATS optimization, space constraints
+Best for: parsing-friendly structure and space constraints
 
 **Option 2: Categorized**
 ```
@@ -138,9 +138,9 @@ Best for: Roles requiring specific proficiency, honest representation
 COMPANY NAME | City, State
 Job Title | Start Date - End Date
 
-• Achievement bullet with metric and impact
-• Achievement bullet with metric and impact
-• Achievement bullet with metric and impact
+• Evidence-backed bullet with concrete implementation or defensible impact
+• Evidence-backed bullet with concrete implementation or defensible impact
+• Evidence-backed bullet with concrete implementation or defensible impact
 ```
 
 ### Bullet Guidelines by Career Stage
@@ -155,7 +155,7 @@ Job Title | Start Date - End Date
 - 4-6 bullets for recent roles
 - 2-3 bullets for older roles
 - Focus on achievements over duties
-- Strong metrics throughout
+- Defensible outcomes and concrete implementation details throughout
 
 **Senior (10+ years):**
 - 5-6 bullets for recent roles

@@ -32,7 +32,7 @@ A highly optimized collection of AI agent skills and custom instructions focused
 - **29 Specialized Agent Skills**: Comprehensive coverage of every stage — from candidate positioning and JD analysis to recruiter rejection simulation and offer comparison.
 - **Candidate-Positioning-First Pipeline**: Determines your role identity (SDE / AI-ML / Full Stack) *before* keyword optimization. The most important step for freshers.
 - **Evidence-Grounded Bullets**: Every resume bullet must be traceable to GitHub source code, project evidence, or verifiable experience. No fabricated metrics.
-- **Recruiter Rejection Simulator**: Simulates why a recruiter would reject your resume in 6 seconds — more useful than abstract ATS scores.
+- **Recruiter Rejection Simulator**: Stress-tests clarity from recruiter and engineering-manager perspectives without predicting hiring outcomes.
 - **Fresher Signal Analyzer**: Evaluates 9 hiring signals critical for new grads (CGPA, DSA, project depth, GitHub quality, deployment evidence).
 - **Application Strategy Engine**: Decides whether to apply at all, preventing wasted effort on poor-fit roles.
 - **The Ultimate LaTeX Mega-Prompt**: Generates compilable LaTeX using **Jake's Template** with a 10-step quality pipeline.
@@ -85,7 +85,7 @@ Phase  1: Evidence Extraction        → GitHub analysis + evidence database
 Phase  2: Resume Audit               → Gap analysis against JD
 Phase  3: LaTeX Construction         → Build resume with Jake's template
 Phase  4: ATS Validation             → Standard headers + keyword check
-Phase  5: Critic Quality Gate        → 10-dimension scorecard
+Phase  5: Critic Quality Gate        → evidence / clarity / parsing gates
 Phase 5.5: Rejection Simulator       → 6s scan / 30s review / EM deep read
 Phase  6: Final Delivery             → LaTeX + Audit Report + Interview Pack
 ```
@@ -104,7 +104,7 @@ Phase  6: Final Delivery             → LaTeX + Audit Report + Interview Pack
    - `INPUT 3: Evidence Sources` (GitHub URLs recommended)
 4. Send the prompt. The AI will execute the 10-step pipeline and output:
    - **Compilable LaTeX Code** — Drop into [Overleaf](https://www.overleaf.com/)
-   - **Resume Audit Report** — Bullet-by-bullet evidence + confidence scores
+   - **Resume Audit Report** — Bullet-by-bullet evidence provenance + defensibility notes
    - **Recruiter Rejection Analysis** — Why a recruiter might reject you + fixes
    - **Interview Preparation Pack** — Q&A pairs per bullet
 
@@ -134,7 +134,7 @@ Each skill in the `skills/` directory contains highly specialized prompt instruc
 | | `resume-section-builder` | Section ordering + conditional coursework rules |
 | | `resume-tailor` | Role-specific highlighting of true experience |
 | | `resume-version-manager` | Master resume + variant tracking |
-| 🎯 **Job Search** | `job-description-analyzer` | Weighted match score computation |
+| 🎯 **Job Search** | `job-description-analyzer` | Eligibility + requirement-to-evidence analysis |
 | | `offer-comparison-analyzer` | Side-by-side total compensation models |
 | ✉️ **Supporting Documents** | `cover-letter-generator` | Non-generic cover letters tied to JD goals |
 | | `linkedin-profile-optimizer` | Headlines, summaries, search optimization |
