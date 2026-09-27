@@ -169,17 +169,16 @@ Certifications → (optional) Leadership/Extracurricular.
 Apply these specialized frameworks at the appropriate workflow stage.
 
 ### Skill 1 — JD Intelligence Analyzer (Phase 0)
-- Build a **keyword importance graph** from the full JD text:
-  - **Critical** (≥5 mentions or in "Required"): MUST appear in resume
-  - **Major** (3–4 mentions or in "Preferred"): SHOULD appear
-  - **Minor** (1–2 mentions): nice to have
-- **Weighted match score**: `Critical(0.60) + Major(0.30) + Minor(0.10)`. Target ≥ 85%.
-- **Infer writing style from JD content** (never from company name):
-  - Detect Audience Tier: Recruiter | Engineering Manager | Researcher
-  - Detect Company Type: Startup/Open Source | Enterprise/Big Tech | Research | DevTools
-  - Combined profile drives tone, verb choices, and emphasis in bullets
-- Detect red flags: scope creep ("rockstar", "wear many hats"), wide salary ranges, vague requirements.
-- Output: **JD Intelligence Briefing** consumed by all downstream stages.
+- Start with a **hard eligibility gate**: graduation timing, degree, student/new-grad status, work authorization, location, availability, and mandatory years of experience.
+- Build a **requirement-to-evidence matrix** from the JD:
+  - **Required**: explicitly mandatory qualifications or responsibilities.
+  - **Preferred**: useful but not stated as mandatory.
+  - **Context**: domain language and secondary tools.
+- For each criterion mark evidence as **Direct / Indirect / Missing** and cite the supporting experience, project, credential, or repository evidence.
+- You may summarize coverage as counts (for example, "6 of 8 required criteria have direct evidence"), but **do not call this an ATS score or use a universal pass threshold**.
+- Infer writing style from JD content, not from company name.
+- Detect ambiguous or conflicting requirements and surface them for review.
+- Output: **JD + Eligibility Briefing** consumed by all downstream stages.
 
 ### Skill 2 — Resume ATS Optimizer (Dual-Stack)
 - **The 5-Stage Hiring Funnel:**
@@ -188,8 +187,8 @@ Apply these specialized frameworks at the appropriate workflow stage.
   3. LLM/AI Ranking (context-rich sentences beat keyword density)
   4. Recruiter Review (readable in 6 seconds)
   5. Hiring Manager / Technical Screen
-- Optimize for **both Stage 1 (ATS) and Stage 3 (LLM ranking)**. These are not in conflict — keywords embedded in context-rich engineering sentences satisfy both.
-- **Fresher Note:** On a short 1-page fresher resume, keyword repetition for density is counterproductive. Each keyword should appear naturally 1-2× — not 2-4×.
+- Optimize for machine readability and requirement evidence without assuming every employer uses the same ranking method.
+- **Fresher Note:** On a short 1-page resume, do not target keyword repetition counts. Mention relevant terms naturally where they are supported by skills, experience, or projects.
 - Standard section headers: Education, Experience, Projects, Technical Skills.
 - Keyword Placement Priority: (1) Technical Skills, (2) Experience Bullets, (3) Project Bullets.
 
@@ -264,7 +263,7 @@ I — Impact:                What measurably changed? Qualify by impact_type.
 - A bullet like "Built RBAC authentication using JWT and Express middleware" is better than "Improved authentication performance by 37%" when that 37% is unverifiable.
 
 ### Skill 6 — Resume Formatter (Jake's Template Specifics)
-- **Page Length**: Strictly ONE page. Use `\vspace{-Xpt}` between sections.
+- **Page Length**: Prefer one page for this fresher workflow. Remove low-value content before tightening spacing. Use `\vspace{-Xpt}` conservatively and keep the exported text readable.
 - **Font**: LaTeX Computer Modern (default, ATS-safe).
 - **Section Headers**: `\section{}` with `\scshape\raggedright\large\bfseries` and `\titlerule`.
 - **Bullet Hierarchy**: `\resumeItem{}` inside `\resumeItemListStart...\resumeItemListEnd`.
